@@ -1,0 +1,94 @@
+<div class="mat-elevation-z8 mt-3 table-responsive">
+    <div class="d-flex justify-content-between align-items-center p-3 search_form">
+        <mat-form-field appearance="outline" class="w-50">
+            <mat-label>Search product</mat-label>
+            <input [(ngModel)]="textSearch" (keyup)="search($event)" matInput placeholder="Product name" />
+            <mat-icon matSuffix *ngIf="!textSearch">search</mat-icon>
+            <button (click)="clearSearch()" mat-icon-button matSuffix *ngIf="textSearch">
+                <mat-icon>close</mat-icon>
+            </button>
+        </mat-form-field>
+        <button mat-flat-button color="primary" [routerLink]="['/mtek/product-create']">
+            <mat-icon>add</mat-icon>
+            เพิ่มสินค้า
+        </button>
+    </div>
+
+    <div class="table-responsive">
+        <table mat-table [dataSource]="dataSource" class="table-striped table-hover w-100">
+            <ng-container matColumnDef="imgPath">
+                <th mat-header-cell *matHeaderCellDef class="text-center">รูปสินค้า</th>
+                <td mat-cell *matCellDef="let data">
+                    <div class="
+                over-lay
+                mx-auto
+                d-block
+                border-top border-left border-right
+                rounded-top
+              ">
+                        <img [src]="data.imgPath" width="100" class="img-fluid rounded mx-auto d-block" alt="" />
+                    </div>
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="pcd">
+                <th mat-header-cell *matHeaderCellDef class="text-center">รหัสสินค้า</th>
+                <td mat-cell *matCellDef="let data" class="text-center">
+                    {{ data.pcd }}
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="pdesc">
+                <th mat-header-cell *matHeaderCellDef>รายละเอียด</th>
+                <td mat-cell *matCellDef="let data" class="text-truncate">
+                    {{ data.pdesc }}
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="gpdesc">
+                <th mat-header-cell *matHeaderCellDef>หมวดหมู่</th>
+                <td mat-cell *matCellDef="let data" class="text-truncate">
+                    {{ data.gpdesc }}
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="prcSale">
+                <th mat-header-cell *matHeaderCellDef class="text-center">ราคาขาย</th>
+                <td mat-cell *matCellDef="let data" class="text-center">
+                    {{ data.prcSale | number }}
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="stock">
+                <th mat-header-cell *matHeaderCellDef class="text-center">คงคลัง</th>
+                <td mat-cell *matCellDef="let data" class="text-center" style="color: red;">
+                    <b> {{ data.stock | number }} </b>
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="blqty">
+                <th mat-header-cell *matHeaderCellDef class="text-center">คลังลูกค้า</th>
+                <td mat-cell mat-cell *matCellDef="let data" class="text-center" style="color: blue;">
+                    <b> {{ data.blqty | number }} </b>
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="action">
+                <th mat-header-cell *matHeaderCellDef class="text-center">ดำเนินการ</th>
+                <td mat-cell *matCellDef="let data" class="text-center">
+                    <button mat-button [routerLink]="['/mtek/stockAllBranch', data.pcd]" style="color: green;">
+                        <mat-icon class="material-icons-outlined"> visibility </mat-icon>
+                    </button>
+                    <button mat-button [routerLink]="['/mtek/product-edit', data.pcd]" style="color: orange;">
+                        <mat-icon class="material-icons-outlined"> edit </mat-icon>
+                    </button>
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumn"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumn"></tr>
+        </table>
+    </div>
+
+    <mat-paginator [pageSizeOptions]="[10, 25, 50, 100]"></mat-paginator>
+</div>

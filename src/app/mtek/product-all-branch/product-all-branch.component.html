@@ -1,0 +1,58 @@
+<div class="table-responsive">
+    <table mat-table [dataSource]="dataSource" class="table-striped table-hover w-100">
+
+        <ng-container matColumnDef="shopName">
+            <th mat-header-cell *matHeaderCellDef class="text-truncate">ร้านค้า</th>
+            <td mat-cell *matCellDef="let data" class="text-truncate">
+                {{ data.shopName }}
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="pcd">
+            <th mat-header-cell *matHeaderCellDef class="text-center">รหัสสินค้า</th>
+            <td mat-cell *matCellDef="let data" class="text-center">
+                {{ data.pcd }}
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="pdesc">
+            <th mat-header-cell *matHeaderCellDef>รายละเอียด</th>
+            <td mat-cell *matCellDef="let data" class="text-truncate">
+                {{ data.pdesc }}
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="gpdesc">
+            <th mat-header-cell *matHeaderCellDef>หมวดหมู่</th>
+            <td mat-cell *matCellDef="let data" class="text-truncate">
+                {{ data.gpdesc }}
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="prcSale">
+            <th mat-header-cell *matHeaderCellDef class="text-center">ราคาขาย</th>
+            <td mat-cell *matCellDef="let data" class="text-center">
+                {{ data.prcSale | number }}
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="blqty">
+            <th mat-header-cell *matHeaderCellDef class="text-center">คงคลัง</th>
+            <td mat-cell *matCellDef="let data" class="text-center">
+                <b class="text-danger"> {{ data.blqty | number }} </b>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="lsactv">
+            <th mat-header-cell *matHeaderCellDef class="text-center">ปรับปรุง</th>
+            <td mat-cell *matCellDef="let data" class="text-center">
+                {{ data.lsactv | date: 'dd-mm-yyyy'}}
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumn"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumn"></tr>
+    </table>
+</div>
+
+<mat-paginator [pageSizeOptions]="[10, 25, 50, 100]"></mat-paginator>

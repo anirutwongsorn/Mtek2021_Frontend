@@ -1,0 +1,23 @@
+<mat-sidenav-container fullscreen *ngIf="isLoggedIn">
+  <mat-sidenav #sidenav [mode]="mobileQueryMax.matches ? 'over' : 'side'"
+    [opened]="mobileQueryMax.matches ? false : true">
+    <app-side-nav (dismiss)="mobileQueryMax.matches ? sidenav.close() : null"></app-side-nav>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <app-header [media_query]="mobileQueryMax.matches" (toogle)="sidenav.toggle()"></app-header>
+    <div class="content-wrapper">
+      <app-progressbar></app-progressbar>
+      <router-outlet></router-outlet>
+      <footer class="mt-3">
+        <div class="d-flex justify-content-center align-items-center">
+          <mat-icon>code</mat-icon>
+          <p class="ml-2" style="margin-bottom: 0px;">
+            Develop by Anirut.wo
+          </p>
+        </div>
+      </footer>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+<app-login *ngIf="!isLoggedIn"></app-login>
