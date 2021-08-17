@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CustomerAddComponent } from './mtek/customer-add/customer-add.component';
+import { CustomerEditComponent } from './mtek/customer-edit/customer-edit.component';
+import { CustomerListComponent } from './mtek/customer-list/customer-list.component';
 import { DashboardComponent } from './mtek/dashboard/dashboard.component';
 import { ProductAllBranchComponent } from './mtek/product-all-branch/product-all-branch.component';
 import { ProductCreateComponent } from './mtek/product-create/product-create.component';
@@ -13,6 +16,9 @@ const routes: Routes = [
       { path: 'stockAllBranch/:pcd', component: ProductAllBranchComponent },
       { path: 'product-create', component: ProductCreateComponent },
       { path: 'product-edit/:pcd', component: ProductEditComponent },
+      { path: 'customer-all', component: CustomerListComponent },
+      { path: 'customer-add', component: CustomerAddComponent },
+      { path: 'customer-edit/:cusid', component: CustomerEditComponent },
     ],
   },
   { path: '**', redirectTo: 'mtek' },

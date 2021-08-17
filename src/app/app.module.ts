@@ -28,6 +28,10 @@ import { ProductTransferComponent } from './mtek/product-transfer/product-transf
 import { ProductAllBranchComponent } from './mtek/product-all-branch/product-all-branch.component';
 import { ProductCreateComponent } from './mtek/product-create/product-create.component';
 import { ProductEditComponent } from './mtek/product-edit/product-edit.component';
+import { CustomerListComponent } from './mtek/customer-list/customer-list.component';
+import { CustomerAddComponent } from './mtek/customer-add/customer-add.component';
+import { CustomerEditComponent } from './mtek/customer-edit/customer-edit.component';
+import { PosTransferGoodsComponent } from './mtek/pos-transfer-goods/pos-transfer-goods.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +49,10 @@ import { ProductEditComponent } from './mtek/product-edit/product-edit.component
     ProductAllBranchComponent,
     ProductCreateComponent,
     ProductEditComponent,
+    CustomerListComponent,
+    CustomerAddComponent,
+    CustomerEditComponent,
+    PosTransferGoodsComponent,
   ],
   imports: [
     BrowserModule,

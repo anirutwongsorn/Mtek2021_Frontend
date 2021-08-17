@@ -109,7 +109,7 @@ export class RestInterceptor implements HttpInterceptor {
                 undefined,
                 configErr
               );
-            } else {
+            } else {              
               this.snackBar.open(error.message, undefined, configErr);
             }
           }

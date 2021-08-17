@@ -2,7 +2,7 @@
     <div class="d-flex justify-content-between align-items-center p-3 search_form">
         <mat-form-field appearance="outline" class="w-50">
             <mat-label>Search product</mat-label>
-            <input [(ngModel)]="textSearch" (keyup)="search($event)" matInput placeholder="Product name" />
+            <input [(ngModel)]="textSearch" (keyup)="search($event)" matInput placeholder="ค้นหาสินค้า" />
             <mat-icon matSuffix *ngIf="!textSearch">search</mat-icon>
             <button (click)="clearSearch()" mat-icon-button matSuffix *ngIf="textSearch">
                 <mat-icon>close</mat-icon>
